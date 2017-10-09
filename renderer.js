@@ -62,6 +62,7 @@ function set_markdown_html(file_path) {
     $('#tab-icons').append('<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab' + tabs + '" role="tab">' + filename + ' <i class="fa fa-minus-square close_tab" aria-hidden="true"></i></a></li>');
     $('#tab-contents').append('<div id="tab' + tabs + '" class="tab-pane fade">' + marked(data) + '</div>');
     $('#tab-icons a[href="#tab' + tabs + '"]').tab('show');
+    $('#tab-contents').css('margin-top', $('#tab-icons').height());
   });
 }
 
