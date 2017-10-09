@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tapper</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <ul id="tab-icons" class="nav nav-tabs" role="tablist">
+      <button id="open-file-button"><i class="fa fa-plus-square" aria-hidden="true"></i> 開く</button>
+    </ul>
+
+    <div id="tab-contents" class="tab-content"></div>
+    <script>
+      window.jQuery = window.$ = require('./node_modules/jquery/dist/jquery.min.js');
+      // require('tether');
+      // require('popper.js')
+      // require('bootstrap')
+      require('./renderer.js');
+    </script>
+    <script src="./node_modules/tether/dist/js/tether.min.js"></script>
+    <script src="./node_modules/popper.js/dist/popper.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
