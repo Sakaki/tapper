@@ -68,14 +68,20 @@ function set_markdown_html(file_path) {
     tabs += 1;
     var file_path_split = file_path.split(path.sep);
     var filename = file_path_split[file_path_split.length - 1].split('.')[0];
+    var dirname = file_path.substring(0, file_path.lastIndexOf(filename));
     $('#tab-icons').append('<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab' + tabs + '" role="tab">' + filename + ' <i class="fa fa-minus-square close_tab" aria-hidden="true"></i></a></li>');
-    var re = /!\[.*\]\((.*)\)/g;
+    // 画像ファイルのパスが存在しない場合、フルパスに変換
+    var re = /!\[.*?\]\((.*?)\)/g;
     var match_path;
     do {
       match_path = re.exec(data);
       if (match_path) {
-        console.log(match_path[1]);
-        // data = data.replace(match_path[1], )
+        var image_path_raw = match_path[1];
+        if (isFileExists(image_path_raw) == false) {
+          // 先頭に付いてる不要な文字列を除去
+          var image_name = image_path_raw.replace(/^\.[\/|\\]/g, "");
+          data = data.split(image_path_raw).join(dirname + image_name);
+        }
       }
     } while (match_path);
     $('#tab-contents').append('<div id="tab' + tabs + '" class="tab-pane fade">' + marked(data) + '</div>');
@@ -90,5 +96,15 @@ $(".nav-tabs").on("click", ".close_tab", function () {
   $(this).parent().remove();
   $(".nav-tabs li").children('a').first().click();
 });
+
+// ファイルの存在確認
+function isFileExists(file) {
+  try {
+    fs.statSync(file);
+    return true
+  } catch(err) {
+    if(err.code === 'ENOENT') return false
+  }
+}
 
 set_markdown_html('README.md');
