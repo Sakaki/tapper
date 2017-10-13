@@ -8,6 +8,15 @@ const fileManagerBtn = document.getElementById('open-file-button');
 const path = require('path');
 var fs = require('fs');
 var marked = require('marked');
+marked.setOptions({
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: true,
+  smartLists: true,
+  smartypants: true
+});
 var tabs = 0;
 
 var options = {
@@ -60,6 +69,15 @@ function set_markdown_html(file_path) {
     var file_path_split = file_path.split(path.sep);
     var filename = file_path_split[file_path_split.length - 1].split('.')[0];
     $('#tab-icons').append('<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab' + tabs + '" role="tab">' + filename + ' <i class="fa fa-minus-square close_tab" aria-hidden="true"></i></a></li>');
+    var re = /!\[.*\]\((.*)\)/g;
+    var match_path;
+    do {
+      match_path = re.exec(data);
+      if (match_path) {
+        console.log(match_path[1]);
+        // data = data.replace(match_path[1], )
+      }
+    } while (match_path);
     $('#tab-contents').append('<div id="tab' + tabs + '" class="tab-pane fade">' + marked(data) + '</div>');
     $('#tab-icons a[href="#tab' + tabs + '"]').tab('show');
     $('#tab-contents').css('margin-top', $('#tab-icons').height());

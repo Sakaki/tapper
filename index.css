@@ -17,3 +17,12 @@ body {
   padding: 10px;
   overflow: scroll;
 }
+
+pre {
+  background: #eee;
+  border: 1px solid;
+  border-color: gray;
+  border-radius: 6px;
+  padding: 8px;
+  margin: 5px;
+}
