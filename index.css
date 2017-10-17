@@ -31,3 +31,17 @@ pre {
 .tab-pane img {
   max-width: 100%;
 }
+
+table {
+  margin: auto;
+}
+
+th, td {
+  border: 1px solid;
+  border-color: #555;
+  padding: 3px 5px;
+}
+
+th {
+  background-color: #eee;
+}

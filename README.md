@@ -22,13 +22,13 @@ npm start
 
 ## License
 
-本体は[GPLv3](https://www.gnu.org/licenses/gpl-3.0.ja.html)とさせていただきます。
+本体は[GPLv3](LICENSE.md)とさせていただきます。
 
 その他のライブラリおよび付属ソフトウェアの利用にあたっては、各ソフトウェアのライセンスを参照してください。
 
 ### electron-quick-start
 
-[CC0 1.0 (Public Domain)](LICENSE.md)
+[CC0 1.0 (Public Domain)](https://github.com/electron/electron-quick-start/blob/master/LICENSE.md)
 
 ### font-awesome
 
